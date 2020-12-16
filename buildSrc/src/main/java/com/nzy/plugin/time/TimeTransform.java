@@ -97,6 +97,9 @@ public class TimeTransform extends Transform {
         // 获取到输出目录，最后将修改的文件复制到输出目录，这一步必须做不然编译会报错
         TransformOutputProvider outputProvider = transformInvocation.getOutputProvider();
 
+        if(outputProvider!=null){
+            outputProvider.deleteAll();
+        }
 
         // 遍历
         for (TransformInput input : inputs) {
@@ -104,7 +107,7 @@ public class TimeTransform extends Transform {
             for (JarInput jarInput : input.getJarInputs()) {
 
                 try {
-//                    transformJar(transformInvocation, jarInput);
+                    transformJar(transformInvocation, jarInput);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -217,7 +220,7 @@ public class TimeTransform extends Transform {
     private byte[] referHackClass(byte[] inputStream) {
         ClassReader classReader = new ClassReader(inputStream);
         ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-        ClassVisitor cv = new AutoClassVisitor(Opcodes.ASM5, classWriter);
+        ClassVisitor cv = new AutoClassVisitor(Opcodes.ASM6, classWriter);
 
         classReader.accept(cv, ClassReader.EXPAND_FRAMES);
         return classWriter.toByteArray();

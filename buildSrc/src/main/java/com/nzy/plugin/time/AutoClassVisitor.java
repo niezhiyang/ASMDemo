@@ -10,7 +10,7 @@ import org.objectweb.asm.MethodVisitor;
  * since 2020/12/14
  */
 public class AutoClassVisitor extends ClassVisitor {
-    public static final String ANNOTATION_METHOD = "Lcom.nzy.asmdemo.DebugLog";
+    public static final String ANNOTATION_METHOD = "Lcom/nzy/asmdemo/DebugLog;";
 
     public AutoClassVisitor(int api, ClassWriter classVisitor) {
         super(api, classVisitor);

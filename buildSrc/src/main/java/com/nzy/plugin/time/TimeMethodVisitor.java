@@ -38,7 +38,7 @@ public class TimeMethodVisitor extends AdviceAdapter {
             Label mLabel0 = new Label();
             methodVisitor.visitLabel(mLabel0);
             methodVisitor.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeMillis", "()J", false);
-            methodVisitor.visitVarInsn(LSTORE, 1);
+            methodVisitor.visitVarInsn(LSTORE, 100);
         }
 
     }
@@ -47,19 +47,18 @@ public class TimeMethodVisitor extends AdviceAdapter {
     @Override
     protected void onMethodExit(int opcode) {
         super.onMethodExit(opcode);
-        System.out.println(name+"---------"+needInject);
         if (needInject) {
             Label label1 = new Label();
             methodVisitor.visitLabel(label1);
 //        methodVisitor.visitLineNumber(12, label1);
             methodVisitor.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeMillis", "()J", false);
-            methodVisitor.visitVarInsn(LSTORE, 3);
+            methodVisitor.visitVarInsn(LSTORE, 300);
             Label label2 = new Label();
             methodVisitor.visitLabel(label2);
 //        methodVisitor.visitLineNumber(14, label2);
             methodVisitor.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            methodVisitor.visitVarInsn(LLOAD, 3);
-            methodVisitor.visitVarInsn(LLOAD, 1);
+            methodVisitor.visitVarInsn(LLOAD, 300);
+            methodVisitor.visitVarInsn(LLOAD, 100);
             methodVisitor.visitInsn(LSUB);
             methodVisitor.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(J)V", false);
             Label label3 = new Label();
@@ -76,9 +75,7 @@ public class TimeMethodVisitor extends AdviceAdapter {
     @Override
     public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
         AnnotationVisitor annotationVisitor = super.visitAnnotation(desc, visible);
-        System.out.println(name+"---------"+ANNOTATION_METHOD);
         if (desc.equals(ANNOTATION_METHOD)) {
-
             needInject = true;
 //                            return new AnnotationVisitor(Opcodes.ASM6, annotationVisitor) {
 //                                @Override

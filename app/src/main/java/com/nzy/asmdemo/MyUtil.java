@@ -5,8 +5,8 @@ package com.nzy.asmdemo;
  * since 2020/12/14
  */
 public class MyUtil {
-    @DebugLog
-    public void getTime(int now) {
+
+    public void getTime(int now,int last,String time) {
         long start = System.currentTimeMillis();
 
         long end = System.currentTimeMillis();
@@ -15,8 +15,9 @@ public class MyUtil {
 
 
     }
+    @DebugLog
+    public void getNoWtime(int now,int last,String time){
 
-    public void getNoWtime(){
         System.out.println("你好");
     }
 }
