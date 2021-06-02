@@ -8,21 +8,20 @@ import android.util.Log;
  */
 public class MyUtil {
 
-    public void getTime(int now,int last,String time) {
+    public void getTime() {
         long start = System.currentTimeMillis();
 
+        Log.e("ssss","sssss");
         long end = System.currentTimeMillis();
 
         System.out.println(end - start);
 
 
-
-
     }
+
     @DebugLog
-    public void getNoWtime(int now,int last,String time){
+    public void getNoWtime() {
 
         System.out.println("开始了---------");
-      Log.e("ssssss","ddddd"+System.currentTimeMillis());
     }
 }

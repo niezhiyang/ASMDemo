@@ -101,6 +101,8 @@ public class TimeTransform extends Transform {
             outputProvider.deleteAll();
         }
 
+
+
         // 遍历
         for (TransformInput input : inputs) {
             // 处理jar
@@ -116,8 +118,6 @@ public class TimeTransform extends Transform {
 
             // 处理目录里面的Class
             for (DirectoryInput directoryInput : input.getDirectoryInputs()) {
-
-
 
                 transformDirectory(transformInvocation, directoryInput);
             }
@@ -189,6 +189,8 @@ public class TimeTransform extends Transform {
                 }
                 FileUtils.copyFile(entry.getValue(), target);
                 entry.getValue().delete();
+
+                mLogger.log(LogLevel.ERROR,target.getAbsolutePath()+"-----");
             }
         }
     }
