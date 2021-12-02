@@ -1,3 +1,4 @@
+println("根build.gradle 开始配置")
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -22,3 +23,4 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+println("根build.gradle 配置完成")

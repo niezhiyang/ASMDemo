@@ -1,13 +1,18 @@
+
 plugins {
     id 'com.android.application'
     id 'com.nzy.plugin'
 }
+println("app build.gradle 开始配置")
 //apply plugin: 'com.android.application'
 ////引用自定义插件 ， 这个就是在 com.nzy.plugin.properties的配置文件
 //apply plugin: 'com.nzy.plugin'
 //或者是直接用类
 //apply plugin: com.nzy.plugin.NzyPlugin
 
+project.afterEvaluate {
+    println "所有模块都已配置完成"
+}
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -43,3 +48,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+println("app build.gradle 配置完成")

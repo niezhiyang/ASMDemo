@@ -1,2 +1,30 @@
+println("setting 开始配置")
 include ':app'
 rootProject.name = "ASMDemo"
+println("setting 配置完成")
+gradle.addBuildListener(new BuildListener() {
+    @Override
+    void buildStarted(Gradle gradle) {
+        println("buildStarted------------ 打包完成")
+    }
+
+    @Override
+    void settingsEvaluated(Settings settings) {
+        println("settingsEvaluated------------ setting.gradle 完成")
+    }
+
+    @Override
+    void projectsLoaded(Gradle gradle) {
+        println("projectsLoaded------------开始加载app根 build.gradle")
+    }
+
+    @Override
+    void projectsEvaluated(Gradle gradle) {
+        println("projectsEvaluated------------ 和 afterProject 一样")
+    }
+
+    @Override
+    void buildFinished(BuildResult result) {
+        println("buildFinished------------")
+    }
+})

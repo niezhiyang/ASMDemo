@@ -91,6 +91,7 @@ public class TimeTransform extends Transform {
     public void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
 
         super.transform(transformInvocation);
+
         // inputs中是传过来的输入流，其中有两种格式，一种是jar包格式一种是目录格式。
         Collection<TransformInput> inputs = transformInvocation.getInputs();
 
