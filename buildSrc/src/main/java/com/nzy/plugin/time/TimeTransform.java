@@ -11,11 +11,11 @@ import com.android.build.api.transform.TransformInvocation;
 import com.android.build.api.transform.TransformOutputProvider;
 import com.android.build.gradle.internal.pipeline.TransformManager;
 import com.android.utils.FileUtils;
+import com.nzy.plugin.thread.ThreadClassVisitor;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
 import org.gradle.api.Project;
-import org.gradle.api.logging.LogLevel;
 import org.gradle.api.logging.Logger;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
@@ -191,7 +191,7 @@ public class TimeTransform extends Transform {
                 FileUtils.copyFile(entry.getValue(), target);
                 entry.getValue().delete();
 
-                mLogger.log(LogLevel.ERROR,target.getAbsolutePath()+"-----");
+//                mLogger.log(LogLevel.ERROR,target.getAbsolutePath()+"-----");
             }
         }
     }
@@ -215,7 +215,7 @@ public class TimeTransform extends Transform {
                 String key = file.getAbsolutePath().replace(dir.getAbsolutePath(), "");
                 modifyMap.put(key, modified);
 
-                mLogger.log(LogLevel.ERROR,key+"----"+file.getAbsolutePath());
+//                mLogger.log(LogLevel.ERROR,key+"----"+file.getAbsolutePath());
             }
         }
     }
@@ -223,7 +223,8 @@ public class TimeTransform extends Transform {
     private byte[] referHackClass(byte[] inputStream) {
         ClassReader classReader = new ClassReader(inputStream);
         ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-        ClassVisitor cv = new AutoClassVisitor(Opcodes.ASM6, classWriter);
+//        ClassVisitor cv = new AutoClassVisitor(Opcodes.ASM6, classWriter);
+        ClassVisitor cv = new ThreadClassVisitor(Opcodes.ASM6, classWriter);
 
         classReader.accept(cv, ClassReader.EXPAND_FRAMES);
         return classWriter.toByteArray();

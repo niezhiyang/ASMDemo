@@ -3,6 +3,7 @@ package com.nzy.plugin;
 import com.android.build.gradle.AppExtension;
 import com.android.build.gradle.api.ApplicationVariant;
 import com.android.build.gradle.tasks.MergeResources;
+import com.nzy.plugin.time.LoggerUtil;
 import com.nzy.plugin.time.TimeTransform;
 
 import org.antlr.v4.misc.Utils;
@@ -28,6 +29,7 @@ public class TimePlugin implements Plugin<Project> {
         System.out.println("-------NzyPlugin------");
         // 注册 Transform, AppExtension 依赖 gradle，所以该模块需要导入 gradle
         mAppExtension = project.getExtensions().getByType(AppExtension.class);
+        LoggerUtil.setLog(project.getLogger());
         // 打印每个方法的时间
         mAppExtension.registerTransform(new TimeTransform(project));
         mProject = project;
