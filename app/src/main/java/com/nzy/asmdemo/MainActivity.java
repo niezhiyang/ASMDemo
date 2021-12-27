@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         System.out.println("--------"+demo.getName());
-        System.loadLibrary("ssss");;
+//        System.loadLibrary("ssss");;
 //        new Thread() {
 //            @Override
 //            public void run() {

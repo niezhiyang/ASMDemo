@@ -25,10 +25,10 @@ public class ThreadClassVisitor extends ClassVisitor {
         MethodVisitor methodVisitor = super.visitMethod(access, name, descriptor, signature, exceptions);
 //        LoggerUtil.e(name +" --- "+ descriptor+ "---"+signature);
 
-        if (mClassName.contains("com/nzy/asmdemo/ThreadDemo") && name.equals("<init>")) {
-            LoggerUtil.e(name + " --- " + descriptor + "---" + signature+"---");
-           return new ThreadAdapterVisitor(api, methodVisitor, access, name, descriptor);
-        }
+//        if (mClassName.contains("com/nzy/asmdemo/ThreadDemo") && name.equals("<init>")) {
+//            LoggerUtil.e(name + " --- " + descriptor + "---" + signature+"---");
+//           return new ThreadAdapterVisitor(api, methodVisitor, access, name, descriptor);
+//        }
         return methodVisitor;
     }
 
@@ -47,7 +47,7 @@ public class ThreadClassVisitor extends ClassVisitor {
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         mClassName = name;
 //        if (mClassName.contains("java/lang/Thread") || mClassName.contains("okhttp3/OkHttpClient$Builder")) {
-//        LoggerUtil.e(name + " --- ");
+           LoggerUtil.e(name + " --- ");
 //        }
 
         super.visit(version, access, name, signature, superName, interfaces);
