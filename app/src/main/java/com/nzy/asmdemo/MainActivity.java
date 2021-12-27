@@ -1,5 +1,6 @@
 package com.nzy.asmdemo;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         System.out.println("--------"+demo.getName());
+        System.loadLibrary("ssss");;
 //        new Thread() {
 //            @Override
 //            public void run() {
@@ -76,5 +78,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onRetainCustomNonConfigurationInstance();
     }
 
-
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 }
